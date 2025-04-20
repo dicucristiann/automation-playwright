@@ -163,4 +163,4 @@ await settings.closeGameModal();
 
 ## License
 
-MIT — maintained by [@dicucristiann](https://www.linkedin.com/in/cristian-s-dicu/)
+MIT — maintained by <a href="https://www.linkedin.com/in/cristian-s-dicu/" target="_blank" rel="noopener noreferrer">@dicucristiann</a>
