@@ -166,5 +166,3 @@ await settings.closeGameModal();
 MIT — maintained by [@dicucristiann](https://www.linkedin.com/in/cristian-s-dicu/)
 
 ```
-
----
