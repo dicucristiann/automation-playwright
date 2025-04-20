@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "types": ["node", "playwright"]
+    },
+    "include": ["tests", "utils", "pages", "locators"]
+  }
+  

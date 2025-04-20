@@ -1,0 +1,19 @@
+{
+  "name": "automation-ux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dicucristiann/automation-ux.git",
+  "author": "dicucristiann <dicucristian24@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.14.1",
+    "dotenv": "^16.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "test": "ts-node testRunner.ts",
+    "test:debug": "ts-node testRunner.ts --debug"
+  }
+}
