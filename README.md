@@ -80,7 +80,7 @@ Edit `.env` to control which test to run, platform, and more:
 
 ```dotenv
 BASE_URL=https://www.avatarux.com
-LANGUAGE=french
+LANGUAGE=en
 PLATFORM=web
 BROWSER=chromium
 SUITE=sanity
@@ -117,8 +117,8 @@ npx playwright test tests/gameTranslation.spec.ts --debug
 ## Features
 
 - Built with **TypeScript**
-- Screenshot capturing per language and test stage
-- Supports **multi-language UI validation**
+- Screenshot capturing per test stage
+- Supports **language UI validation**
 - Works with **headless** or **UI browsers**
 - Modular structure following **Page Object Model**
 - HTML report support
@@ -138,12 +138,12 @@ npx playwright test tests/gameTranslation.spec.ts --debug
 
 ```ts
 await settings.openHamburgerMenu();
-await settings.openGameInfo();
+await settings.openGameInfo(expectedTranslations);
 await settings.scrollInSection('game_info');
 await settings.closeMenuButton();
 
 await settings.openHamburgerMenu();
-await settings.openGameRules();
+await settings.openGameRules(expectedTranslations);
 await settings.scrollInSection('game_rules');
 await settings.closeMenuButton();
 
