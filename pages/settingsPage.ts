@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Frame, Page } from "@playwright/test";
 import { locators } from "../locators/locators";
 import { takeScreenshot } from "../utils/screenshotHelper";
 import { waitAndClick } from "../utils/genericActions";
@@ -59,14 +59,25 @@ export class SettingsPage {
         }
     }
 
-    async openGameInfo() {
+    async verifyTranslationInFrame(frame: Frame, expectedText: string) {
+        const isVisible = await frame.locator(locators.iFrame.frame).allTextContents();
+        if (!isVisible) {
+            throw new Error(`Missing translation: "${expectedText}"`);
+        }
+        console.log(` Translation OK: "${expectedText}"`);
+    }
+
+
+    async openGameInfo(expectedTranslations: Record<string, string>) {
         const iframeElement = await this.page.locator(locators.iFrame.frame).elementHandle();
         const frame = await iframeElement?.contentFrame();
         if (!frame) throw new Error('Iframe not found via locator');
 
         await waitAndClick(frame, locators.settings.gameInfoButton);
         await takeScreenshot(this.page, 'game_info_opened', this.testName);
+        await this.verifyTranslationInFrame(frame, expectedTranslations.game_info,);
     }
+
 
     async closeMenuButton() {
         const iframeElement = await this.page.locator(locators.iFrame.frame).elementHandle();
@@ -77,13 +88,14 @@ export class SettingsPage {
         await takeScreenshot(this.page, 'game_info_closed', this.testName);
     }
 
-    async openGameRules() {
+    async openGameRules(expectedTranslations: Record<string, string>) {
         const iframeElement = await this.page.locator(locators.iFrame.frame).elementHandle();
         const frame = await iframeElement?.contentFrame();
-        if (!frame) throw new Error('Iframe not found');
+        if (!frame) throw new Error('Iframe not found via locator');
 
         await waitAndClick(frame, locators.settings.gameRulesButton);
         await takeScreenshot(this.page, 'game_rules_opened', this.testName);
+        await this.verifyTranslationInFrame(frame, expectedTranslations.game_rules);
     }
 
     async closeGameRules() {
